@@ -6,6 +6,12 @@
   <default revision="refs/tags/android-p-preview-1"
            remote="aosp"
            sync-j="4" />
+   <remote  name="clean"
+            fetch="https://github.com/CleanAosp-O/"
+            revision="8.1x"/>
+   <remote  name="bb"
+            fetch="https://bitbucket.org" />
+  
   <project path="build/make" name="platform/build" groups="pdk" >
     <copyfile src="core/root.mk" dest="Makefile" />
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
@@ -449,7 +455,6 @@
   <project path="hardware/intel/img/psb_headers" name="platform/hardware/intel/img/psb_headers" groups="intel,pdk" />
   <project path="hardware/intel/img/psb_video" name="platform/hardware/intel/img/psb_video" groups="intel,pdk" />
   <project path="hardware/intel/sensors" name="platform/hardware/intel/sensors" groups="intel_sensors,pdk" />
-  <project path="hardware/interfaces" name="platform/hardware/interfaces" groups="pdk" />
   <project path="hardware/invensense" name="platform/hardware/invensense" groups="invensense,pdk" />
   <project path="hardware/libhardware" name="platform/hardware/libhardware" groups="pdk" />
   <project path="hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" groups="pdk" />
@@ -472,11 +477,9 @@
   <project path="hardware/qcom/msm8x09" name="platform/hardware/qcom/msm8x09" groups="qcom_msm8x09" />
   <project path="hardware/qcom/msm8x26" name="platform/hardware/qcom/msm8x26" groups="qcom_msm8x26,pdk" />
   <project path="hardware/qcom/msm8x27" name="platform/hardware/qcom/msm8x27" groups="qcom_msm8x27,pdk" />
-  <project path="hardware/qcom/msm8x84" name="platform/hardware/qcom/msm8x84" groups="qcom_msm8x84,pdk" />
   <project path="hardware/qcom/neuralnetworks/hvxservice" name="platform/hardware/qcom/neuralnetworks/hvxservice" groups="wahoo" />
   <project path="hardware/qcom/power" name="platform/hardware/qcom/power" groups="qcom,pdk" />
   <project path="hardware/qcom/wlan" name="platform/hardware/qcom/wlan" groups="qcom_wlan,pdk" />
-  <project path="hardware/ril" name="platform/hardware/ril" groups="pdk" />
   <project path="kernel/configs" name="kernel/configs" groups="vts,pdk" />
   <project path="kernel/tests" name="kernel/tests" />
   <project path="libcore" name="platform/libcore" groups="pdk" />
@@ -635,7 +638,6 @@
   <project path="system/libvintf" name="platform/system/libvintf" groups="pdk" />
   <project path="system/media" name="platform/system/media" groups="pdk" />
   <project path="system/netd" name="platform/system/netd" groups="pdk" />
-  <project path="system/nfc" name="platform/system/nfc" groups="pdk" />
   <project path="system/nvram" name="platform/system/nvram" groups="pdk" />
   <project path="system/security" name="platform/system/security" groups="pdk" />
   <project path="system/sepolicy" name="platform/system/sepolicy" groups="pdk" />
@@ -683,4 +685,21 @@
   <project path="tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" />
   <project path="tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" />
   <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
+  <!-- Device -->
+  <project path="device/moto/shamu" name="device_shamu" remote="clean" />
+  <!-- Frameworks -->
+  <project path="frameworks/av" name="platform_frameworks_av" remote="clean" />
+  <!-- Hardware -->
+  <project path="hardware/interfaces" name="platform_hardware_interfaces" remote="clean" />
+  <project path="hardware/qcom/msm8x84" name="platform_hardware_qcom_msm8x84" remote="clean" />
+  <project path="hardware/ril" name="platform_hardware_ril" remote="clean" />
+  <!-- Kernel -->
+<project path="kernel/moto/shamu" name="kernel_moto_shamu" remote="clean" />
+   <!-- Prebuilts -->
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.9" name="joryb/arm-eabi-7.x" clone-depth="1" remote="bb" revision="master"/>
+  <!-- System -->
+  <project path="system/nfc" name="android_platform_system_nfc" remote="clean" />
+  <!-- Vendor -->
+  <project path="vendor/caosp" name="platform_vendor_caosp" remote="clean" />
+  <project path="vendor/moto" name="proprietary_vendor_motorola" remote="clean" /> 
 </manifest>
